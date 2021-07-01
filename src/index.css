@@ -1,4 +1,4 @@
-body {
+/* body {
   background-color: #282c34;
   color: rgb(228, 210, 210);
   margin: 0;
@@ -7,11 +7,4 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-.container{
-  width: 50%;
-  margin: 0 auto;
-  border: 3px solid rgb(126, 124, 124);
-  padding: 0 2em 2em;
-  margin-top: 1em;
-}
+} */
