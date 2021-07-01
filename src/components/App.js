@@ -12,7 +12,7 @@ import VideoDetail from "./VideoDetail";
 
 const styles = (theme) => ({
   root: {
-    // flexGrow: 1,
+   flexGrow: 1,
     // width: "90%",
     // margin: "0 auto",
     // border: "3px solid rgb(126, 124, 124)",
@@ -60,10 +60,10 @@ class App extends React.Component {
             </article>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs={8}>
             <VideoDetail video={this.state.selectedVideo} />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={4}>
             <VideoList
               onVideoSelect={this.onVideoSelect}
               videos={this.state.videos}

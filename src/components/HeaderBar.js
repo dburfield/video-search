@@ -22,7 +22,7 @@ export default function HeaderBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar variant="dense">
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="videos">
+          <IconButton edge="start" className={classes.menuButton}  aria-label="videos">
             <VideoLibraryIcon />
           </IconButton>
           <Typography variant="h6" color="inherit">
