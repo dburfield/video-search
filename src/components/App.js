@@ -2,9 +2,9 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Toolbar from '@material-ui/core/Toolbar';
+import Toolbar from "@material-ui/core/Toolbar";
 
-import HeaderBar from "./HeaderBar.js"
+import HeaderBar from "./HeaderBar.js";
 import SearchBar from "./SearchBar";
 import youtube from "../apis/youtube";
 import VideoList from "./VideoList";
@@ -12,7 +12,7 @@ import VideoDetail from "./VideoDetail";
 
 const styles = (theme) => ({
   root: {
-   flexGrow: 1,
+    flexGrow: 1,
     // width: "90%",
     // margin: "0 auto",
     // border: "3px solid rgb(126, 124, 124)",
@@ -26,7 +26,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // load with 'pinball' as default
-    this.onSearchSubmit("forest");
+    this.onSearchSubmit("pinball");
   }
 
   onSearchSubmit = async (searchterm) => {
@@ -49,10 +49,9 @@ class App extends React.Component {
 
   render() {
     const { classes } = this.props;
-    return (    
-      <>                       <header>
-      <HeaderBar />
-      </header>
+    return (
+      <>
+        <HeaderBar />
         <Grid container className={classes.root}>
           <Grid item xs={12}>
             <article>
@@ -69,8 +68,8 @@ class App extends React.Component {
               videos={this.state.videos}
             />
           </Grid>
-        </Grid>  
-        </>    
+        </Grid>
+      </>
     );
   }
 }

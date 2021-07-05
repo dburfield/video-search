@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import ButtonBase from "@material-ui/core/ButtonBase";
+var decode = require('unescape');
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const VideoItem = ({ video, onVideoSelect }) => {
+const VideoItem = ({ video, onVideoSelect, key }) => {
   const classes = useStyles();
   return (
     <>
       <Grid item xs={6} onClick={() => onVideoSelect(video)}>
-        <ButtonBase className={classes.image}>
+        <ButtonBase className={classes.image}>          
           <img
             alt={video.snippet.title}
             className={classes.img}

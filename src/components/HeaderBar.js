@@ -20,8 +20,8 @@ export default function HeaderBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar variant="dense">
+      <AppBar position="fixed">
+        <Toolbar >
           <IconButton edge="start" className={classes.menuButton}  aria-label="videos">
             <VideoLibraryIcon />
           </IconButton>
