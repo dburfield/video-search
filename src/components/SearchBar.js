@@ -18,6 +18,10 @@ const styles = (theme) => ({
     width: "100%",
     marginLeft: theme.spacing(1),
     flex: 1,
+    background: "#3b3b3b",
+    "&:-webkit-autofill": {
+      WebkitBoxShadow: "0 0 0 1000px #3b3b3b inset"
+    }
   },
   iconButton: {
     padding: 10,

@@ -13,20 +13,16 @@ import VideoDetail from "./VideoDetail";
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
-    // width: "90%",
-    // margin: "0 auto",
-    // border: "3px solid rgb(126, 124, 124)",
     padding: "2em",
-    // marginTop: "1em",
   },
 });
 
 class App extends React.Component {
-  state = { videos: [], selectedVideo: null };
+  state = { videos: [], selectedVideo: null, likes: 1543, dislikes: 47, views: 2155 };
 
   componentDidMount() {
-    // load with 'pinball' as default
-    this.onSearchSubmit("pinball");
+    // do a placeholder default search
+    this.onSearchSubmit("carl sagan tesseract");    
   }
 
   onSearchSubmit = async (searchterm) => {
@@ -39,12 +35,17 @@ class App extends React.Component {
 
     this.setState({
       videos: response.data.items,
-      selectedVideo: response.data.items[0],
+      selectedVideo: response.data.items[0]      
     });
   };
 
-  onVideoSelect = (video) => {
-    this.setState({ selectedVideo: video });
+  onVideoSelect = (video, likes, dislikes, views) => {    
+    this.setState({
+      selectedVideo: video,
+      likes: likes,
+      dislikes: dislikes,
+      views: views,
+    });
   };
 
   render() {
@@ -60,7 +61,12 @@ class App extends React.Component {
           </Grid>
 
           <Grid item xs={8}>
-            <VideoDetail video={this.state.selectedVideo} />
+            <VideoDetail
+              video={this.state.selectedVideo}
+              likes={this.state.likes}
+              dislikes={this.state.dislikes}
+              views={this.state.views}
+            />
           </Grid>
           <Grid item xs={4}>
             <VideoList

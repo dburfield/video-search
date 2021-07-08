@@ -9,30 +9,39 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-
-  img: {
+  thumbnail: {
     margin: "auto",
     display: "block",
     maxWidth: "100%",
     maxHeight: "100%",
+    border: "2px solid",
+    '&:hover': {border:"2px solid #ff0000"}
   },
+  thumbnailDescription: {
+    '&:hover': {color: "#ff0000"}
+  }
 }));
 
-const VideoItem = ({ video, onVideoSelect, key }) => {
+const VideoItem = ({ video, onVideoSelect }) => {
   const classes = useStyles();
+  let likes = Math.floor((Math.random() * 1000)+ 500)
+  let dislikes = Math.floor(Math.random() * 400)
+  let views =  Math.floor(Math.random() * 5000)
+
   return (
     <>
-      <Grid item xs={6} onClick={() => onVideoSelect(video)}>
+      <Grid item xs={6} onClick={() => onVideoSelect(video, likes, dislikes, views)}>
         <ButtonBase className={classes.image}>          
           <img
             alt={video.snippet.title}
-            className={classes.img}
+            className={classes.thumbnail}
+            id="thumbnail"
             src={video.snippet.thumbnails.medium.url}
           />
         </ButtonBase>
       </Grid>
       <Grid item xs={6}>
-        <Typography variant="subtitle1">{video.snippet.title}</Typography>
+        <Typography className="thumbnailDescription" variant="subtitle1">{decode(video.snippet.title)}</Typography>
       </Grid>
     </>
   );
