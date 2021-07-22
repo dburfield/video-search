@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const VideoItem = ({ video, onVideoSelect }) => {
+  
   const classes = useStyles();
-  let likes = Math.floor((Math.random() * 1000)+ 500)
-  let dislikes = Math.floor(Math.random() * 400)
   let views =  Math.floor(Math.random() * 5000)
-
+  let likes = Math.floor((Math.random() * 1000)+ 500)
+  let dislikes = Math.floor(Math.random() * 400) 
   return (
     <>
-      <Grid item xs={6} onClick={() => onVideoSelect(video, likes, dislikes, views)}>
+      <Grid item xs={6} onClick={() => onVideoSelect(video, views, likes, dislikes)}>
         <ButtonBase className={classes.image}>          
           <img
             alt={video.snippet.title}

@@ -16,35 +16,42 @@ const styles = (theme) => ({
     padding: "2em",
   },
 });
-
+let views =  Math.floor(Math.random() * 5000)
+let likes = Math.floor((Math.random() * 1000)+ 500)
+let dislikes = Math.floor(Math.random() * 400) 
 class App extends React.Component {
-  state = { videos: [], selectedVideo: null, likes: 1543, dislikes: 47, views: 2155 };
-
+  
+  state = { videos: [], selectedVideo: null, views:views, likes:likes, dislikes:dislikes};
+  
   componentDidMount() {
-    // do a placeholder default search
-    this.onSearchSubmit("carl sagan tesseract");    
+    // do a landing default search
+    this.onSearchSubmit("4d tesseract", 5);    
   }
 
-  onSearchSubmit = async (searchterm) => {
+  onSearchSubmit = async (searchterm, results) => {
+    console.log('onserach submit triggers')
     const response = await youtube.get("/search", {
       params: {
         q: searchterm,
-        maxResults: 5,
+        maxResults: results,
       },
     });
 
     this.setState({
       videos: response.data.items,
-      selectedVideo: response.data.items[0]      
+      selectedVideo: response.data.items[0],
+      views: views, 
+      likes: likes,
+      dislikes: dislikes   
     });
   };
-
-  onVideoSelect = (video, likes, dislikes, views) => {    
+  
+  onVideoSelect = (video, views, likes, dislikes) => {    
     this.setState({
-      selectedVideo: video,
+      selectedVideo: video, 
+      views: views, 
       likes: likes,
-      dislikes: dislikes,
-      views: views,
+      dislikes: dislikes
     });
   };
 

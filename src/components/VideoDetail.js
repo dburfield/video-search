@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
@@ -6,14 +6,14 @@ import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import Divider from "@material-ui/core/Divider";
 import { Typography } from "@material-ui/core";
 import { IconButton } from "@material-ui/core";
-import Moment from 'react-moment';
+import Moment from "react-moment";
 var decode = require("unescape");
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     paddingRight: "3em",
-  },  
+  },
   video: {
     position: "absolute",
     top: "0",
@@ -22,22 +22,25 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
   },
   likes: {
-    textAlign: "right"
+    textAlign: "right",
   },
   h1: {
     fontSize: "1.5em",
-    margin: ".6em 0"
-  }
+    margin: ".6em 0",
+  },
 }));
 
-
-const VideoDetail = ({ video, likes, dislikes, views }) => {
+const VideoDetail = ({ video, views, likes, dislikes }) => {
   const classes = useStyles();
 
   const [likecount, setLikeCount] = useState(likes);
   const [dislikecount, setDislikeCount] = useState(dislikes);
-  
-  // setLikeCount(likes)
+
+  // when new video selected, update like/dislike counts
+  useEffect(() => {
+    setLikeCount(likes);
+    setDislikeCount(dislikes);
+  }, [likes, dislikes]);
 
   if (!video) {
     return <div>Loading...</div>;
@@ -59,7 +62,7 @@ const VideoDetail = ({ video, likes, dislikes, views }) => {
         <Grid container justify="space-between" alignItems="center">
           <Grid item xs>
             <p>
-              {views} views <span id="dot"></span> 
+              {views} views <span id="dot"></span>
               <Moment format="LL">{video.snippet.publishedAt}</Moment>
             </p>
           </Grid>
@@ -67,7 +70,7 @@ const VideoDetail = ({ video, likes, dislikes, views }) => {
             <p className={classes.likes}>
               <IconButton onClick={() => setLikeCount(likecount + 1)}>
                 <ThumbUpIcon />
-              </IconButton>              
+              </IconButton>
               {likecount}
               <IconButton onClick={() => setDislikeCount(dislikecount + 1)}>
                 <ThumbDownIcon />
