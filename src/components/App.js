@@ -16,44 +16,55 @@ const styles = (theme) => ({
     padding: "2em",
   },
 });
-let views =  Math.floor(Math.random() * 5000)
-let likes = Math.floor((Math.random() * 1000)+ 500)
-let dislikes = Math.floor(Math.random() * 400) 
+
+// initialize random (fake) views and likes for landing only
+let views = Math.floor(Math.random() * 5000);
+let likes = Math.floor(Math.random() * 1000 + 500);
+let dislikes = Math.floor(Math.random() * 400);
+
+
 class App extends React.Component {
-  
-  state = { videos: [], selectedVideo: null, views:views, likes:likes, dislikes:dislikes};
-  
-  componentDidMount() {
-    // do a landing default search
-    this.onSearchSubmit("4d tesseract", 5);    
-  }
+  state = {
+    videos: [],
+    selectedVideo: null,
+    views: views,
+    likes: likes,
+    dislikes: dislikes,
+  };
 
   onSearchSubmit = async (searchterm, results) => {
-    console.log('onserach submit triggers')
+    // fetch the video response
     const response = await youtube.get("/search", {
       params: {
         q: searchterm,
         maxResults: results,
       },
     });
-
+    // apply video fetch to the state
+    // also apply the random (fake) views and likes
     this.setState({
       videos: response.data.items,
       selectedVideo: response.data.items[0],
-      views: views, 
+      views: views,
       likes: likes,
-      dislikes: dislikes   
+      dislikes: dislikes,
     });
   };
-  
-  onVideoSelect = (video, views, likes, dislikes) => {    
+
+  // pass a callback to the video list
+  onVideoSelect = (video, views, likes, dislikes) => {
     this.setState({
-      selectedVideo: video, 
-      views: views, 
+      selectedVideo: video,
+      views: views,
       likes: likes,
-      dislikes: dislikes
+      dislikes: dislikes,
     });
   };
+
+  // do an inital search after load
+  componentDidMount() {
+    this.onSearchSubmit("4d tesseract", 5);
+  }
 
   render() {
     const { classes } = this.props;

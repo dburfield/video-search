@@ -22,12 +22,15 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const VideoItem = ({ video, onVideoSelect }) => {
+const VideoItem = ({ video, onVideoSelect}) => {
   
   const classes = useStyles();
+
+  // initialize NEW random (fake) views and likes to pass down to VideoDetail
   let views =  Math.floor(Math.random() * 5000)
   let likes = Math.floor((Math.random() * 1000)+ 500)
   let dislikes = Math.floor(Math.random() * 400) 
+
   return (
     <>
       <Grid item xs={6} onClick={() => onVideoSelect(video, views, likes, dislikes)}>
