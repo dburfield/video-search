@@ -30,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 const VideoDetail = ({ video, views, likes, dislikes }) => {
   const classes = useStyles();
 
@@ -47,6 +49,16 @@ const VideoDetail = ({ video, views, likes, dislikes }) => {
   }
 
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
+
+  const addLikes = () =>{
+    setLikeCount(likecount + 1)
+    setDislikeCount(dislikecount - 1)
+  }
+
+  const addDisLikes = () =>{
+    setDislikeCount(dislikecount + 1)
+    setLikeCount(likecount - 1)
+  }
 
   return (
     <Grid container className={classes.root}>
@@ -68,11 +80,11 @@ const VideoDetail = ({ video, views, likes, dislikes }) => {
           </Grid>
           <Grid item xs>
             <p className={classes.likes}>
-              <IconButton onClick={() => setLikeCount(likecount + 1)}>
+              <IconButton onClick={addLikes}>
                 <ThumbUpIcon />
               </IconButton>
               {likecount}
-              <IconButton onClick={() => setDislikeCount(dislikecount + 1)}>
+              <IconButton onClick={addDisLikes}>
                 <ThumbDownIcon />
               </IconButton>
               {dislikecount}
