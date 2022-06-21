@@ -36,7 +36,7 @@ class SearchBar extends React.Component {
   };
 
   // TODO
-  // what are you waiting for? JUST DO EET
+  // what are you waiting for? JUST DO EET 
   // onMaxresultsChange = event => {
   //   this.setState({ maxresults: event.target.value });
   // };
