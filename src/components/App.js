@@ -17,6 +17,7 @@ const styles = (theme) => ({
   },
 });
 
+// how awesome
 // initialize random (fake) views and likes for landing only
 let views = Math.floor(Math.random() * 5000);
 let likes = Math.floor(Math.random() * 1000 + 500);
