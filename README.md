@@ -16,5 +16,3 @@ Leveraged Material for theme switcher along with the familiar form components
 
 * Moment https://momentjs.com/
 Used Moment to format the timestamp 
-
-### [Demo](http://danburfield.com/video-search/index.html)
